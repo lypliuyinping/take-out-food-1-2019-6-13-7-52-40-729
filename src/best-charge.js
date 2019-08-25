@@ -6,7 +6,6 @@ function bestCharge(selectedItems) {
   let originPrice=calculate(itemsArray);
   let firstPrice=firstCaculate(itemsArray);
   let secondPrice=secondCaculate(itemsArray);
-  //let minPrice = Minimum(firstPrice,secondPrice);
   let print = printItems(originPrice,firstPrice,secondPrice,itemsArray);
   return print;
 }
@@ -68,7 +67,6 @@ function secondCaculate(items) {
       totalPrice+=items[i].price*items[i].count;
     }
   }
-   //let  result=[];
    // const types = loadPromotions();
    // let totalPrice=0;
    // for (let i = 0; i < items.length; i++) {
@@ -92,19 +90,17 @@ function printItems(originPrice, firstPrice, secondPrice, items) {
       print+=  "肉夹馍 x "+items[i].count+" = "+(items[i].count*items[i].price)+"元\n" ;
     if (items[i].id=='ITEM0022')
       print+= "凉皮 x "+items[i].count+" = "+items[i].count*items[i].price+"元\n";
-
-   // break;
-
   }
   print+=  "-----------------------------------\n";
   let minPrice=0;
   if (firstPrice>=secondPrice){
     minPrice=secondPrice;
   }else minPrice=firstPrice;
+
   if(minPrice==originPrice){
     print+="总计："+originPrice+"元" +"\n===================================";
   }
-  if ((originPrice!=secondPrice)&&(minPrice==firstPrice)){
+  if ((originPrice!=firstPrice)&&(minPrice==firstPrice)){
     print+="使用优惠:\n" +
       "满30减6元，省"+(originPrice-firstPrice)+"元\n" +  "-----------------------------------\n" +
       "总计："+firstPrice+"元\n" +
